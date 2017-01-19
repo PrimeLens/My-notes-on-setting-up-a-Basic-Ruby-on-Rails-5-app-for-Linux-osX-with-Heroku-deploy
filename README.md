@@ -62,7 +62,8 @@ Get it from [https://github.com/github/gitignore/blob/master/Rails.gitignore](ht
     $ rails server
 
 <br/>
-## Edit the Gemfile for Heroku deploy
+## Heroku deploy
+#### Edit the Gemfile for Heroku deploy
 Edit `Gemfile` in the root folder and delete 
 
     # Use sqlite3 as the database for Active Record
@@ -83,7 +84,7 @@ Run the package manager to implement these changes
 
     $ bundle --without production
 
-Do the standard git stuff for a heroku push
+#### Local git to heroku deploy
 
     $ git init
     $ git add -A; git add.
@@ -93,7 +94,22 @@ Do the standard git stuff for a heroku push
     $ git remote        # check the heroku remote is added
     $ git push heroku master
 
-IMPORTANT you must also run the migrate command to create the table in the db
+#### Github to Heroku CI Integration
 
-  $ heroku run rake db:migrate
+- create a branch called staging
+- in Heroku create an app using hte dashboard
+- then in that app go to Deploy > Deploy method > Github
+- hit Connect to GitHub and authorize the application
+- hit Enable Automatic Deploys
+- check box "Wait for CI to pass before deploy" if you want to have tests pass before deploy (see heroku and github docs)
 
+
+### IMPORTANT run the db migrate command 
+You must do this once the first time you deploy to create the table in the db. I did this by adding the remote locally and running it locally 
+
+    $ heroku run rake db:migrate
+
+Now when you go to see the app it will say _The page you were looking for doesn't exist._ and this is normal the Rails app is running!!<br/>
+For an explanation why you see that message see here [http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app](http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app) 
+
+#### _NEXT WE ARE GOING TO BUILD OUT THE RAILS APP_
