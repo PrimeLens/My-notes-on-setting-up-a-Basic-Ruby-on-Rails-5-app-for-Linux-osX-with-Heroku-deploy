@@ -1,6 +1,8 @@
 # My notes on setting up a Basic Ruby on Rails 5 app for Linux/OSX with Heroku deploy
 
-## Installation of the Rails 5 Boilerplate
+If you are wanting to download this repo and run it,  scroll down to relevant section
+
+## Installation of the Rails 5 Boilerplate from scratch
 #### Check that hombrew is installed
 
     $ brew help
@@ -62,6 +64,19 @@ Get it from [https://github.com/github/gitignore/blob/master/Rails.gitignore](ht
     $ rails server
 
 <br/>
+## Downloading this Repo instead
+Clone the repo, then alter the permissions so Rails can write folders
+
+    $ sudo chmod -R 777 My-notes-on-setting-up-a-Basic-Ruby-on-Rails-5-app-for-Linux-osX-with-Heroku-deploy
+    
+Download the gems and start the server
+
+    $ bundle --without production
+    $ rails server
+
+Use browser to visit `http://localhost:3000/#`
+
+<br/>
 ## Heroku deploy
 #### Edit the Gemfile for Heroku deploy
 Edit `Gemfile` in the root folder and delete 
@@ -109,6 +124,27 @@ You must do this once the first time you deploy to create the table in the db. I
 
     $ heroku run rake db:migrate
 
-Now when you go to see the app it will say _The page you were looking for doesn't exist._ and this is normal the Rails app is running!!<br/>
-For an explanation why you see that message see here [http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app](http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app) 
+Now when you go to see the app on Heroku it will say _The page you were looking for doesn't exist._ and this is normal the Rails app is running!!<br/>
+For an explanation why you see that message see here [http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app](http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app)<br/>
+To correct this you must generate a controller (see below) 
+
+<br/>
+## Generate a controller
+
+Lets say our home page is going to be about Films
+
+    rails generate controller Films index
+
+Then edit `/config/routes.rb` and delete `get 'films/index'` swapping it for
+
+    # use the films controller
+    resources :films  
+    root 'films#index'
+
+Then edit `/app/views/films/index.html.erb` and paste in 
+
+    <h1>Hello World</h1>
+
+
+
 
