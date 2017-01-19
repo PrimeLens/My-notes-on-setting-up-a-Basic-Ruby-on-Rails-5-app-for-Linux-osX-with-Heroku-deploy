@@ -61,4 +61,39 @@ Get it from [https://github.com/github/gitignore/blob/master/Rails.gitignore](ht
 
     $ rails server
 
+<br/>
+## Edit the Gemfile for Heroku deploy
+Edit `Gemfile` in the root folder and delete 
+
+    # Use sqlite3 as the database for Active Record
+    gem 'sqlite3'
+
+At the bottom of the file set up groups by adding the following
+
+    group :development do
+      gem'sqlite3'
+    end
+
+    group :production do
+      gem 'pg'                # pg gem for postgres
+      gem 'rails_12factor'    # heroku needs this
+    end
+
+Run the package manager to implement these changes
+
+    $ bundle --without production
+
+Do the standard git stuff for a heroku push
+
+    $ git init
+    $ git add -A; git add.
+    $ git commit -m "adding files for a test push to heroku"
+    $ heroku login      # make sure heroku toolbelt is installed first
+    $ heroku create
+    $ git remote        # check the heroku remote is added
+    $ git push heroku master
+
+IMPORTANT you must also run the migrate command to create the table in the db
+
+  $ heroku run rake db:migrate
 
