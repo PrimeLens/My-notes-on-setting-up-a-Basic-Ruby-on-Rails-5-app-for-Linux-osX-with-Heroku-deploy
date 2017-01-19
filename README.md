@@ -112,4 +112,9 @@ You must do this once the first time you deploy to create the table in the db. I
 Now when you go to see the app it will say _The page you were looking for doesn't exist._ and this is normal the Rails app is running!!<br/>
 For an explanation why you see that message see here [http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app](http://stackoverflow.com/questions/17964830/where-is-the-default-welcome-aboard-page-located-in-my-app) 
 
+#### Workflow
+Everyday work I will commit to master `git push origin master`<br/>
+When I want to push to staging `git push origin master:staging` and Continuous Integration will deploy to Heroku for me
+
+
 #### _NEXT WE ARE GOING TO BUILD OUT THE RAILS APP_
