@@ -64,18 +64,23 @@ Get it from [https://github.com/github/gitignore/blob/master/Rails.gitignore](ht
     $ rails server
 
 <br/>
-## Downloading this Repo instead
-Clone the repo, then alter the permissions so Rails can write folders
+## Downloading this Repo instead and running it
+Clone the repo or download the zip and unpack it.<br/>
+Change directory into the folder for this repo and install the bundler gem
 
-    $ sudo chmod -R 777 My-notes-on-setting-up-a-Basic-Ruby-on-Rails-5-app-for-Linux-osX-with-Heroku-deploy
-    
-Download the gems and start the server
+    $ gem install bundler
+
+Use bundler to download the gems and start the server
 
     $ bundle --without production
     $ rails server
 
 Use browser to visit `http://localhost:3000/#`
 
+Sometimes you might run into permission problems because Rails creates directories and files. If this happens I have found the following command helpful.  First change directory up a folder level, run the command then cd back into the folder before staring the server.
+
+    $ sudo chmod -R 777 My-notes-on-setting-up-a-Basic-Ruby-on-Rails-5-app-for-Linux-osX-with-Heroku-deploy
+    
 <br/>
 ## Heroku deploy
 #### Edit the Gemfile for Heroku deploy
