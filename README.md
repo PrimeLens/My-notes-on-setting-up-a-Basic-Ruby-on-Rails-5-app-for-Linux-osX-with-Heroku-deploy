@@ -9,7 +9,10 @@ If you are wanting to download this repo and run it,  scroll down to relevant se
     $ brew update
 
 #### Use brew to install rbenv to manage different versions of Ruby
-To install version manager `$ brew install rbenv ruby-build`<br/>
+To install rbenv version manager 
+
+    $ brew install rbenv
+
 In the home folder you will need to edit file named .bash_profile `$ open ~/.bash_profile`<br/>
 And add the following lines
 
