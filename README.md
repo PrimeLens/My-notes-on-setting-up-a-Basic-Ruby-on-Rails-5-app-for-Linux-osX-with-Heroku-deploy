@@ -43,8 +43,8 @@ Check the version of rails installed
 
 #### Create a rails app 
 
-    $ rails new myapp        
-
+    $ rails new myapp
+    
 If 'mkdir' permission problems do this inside app folder
 
     $ mkdir tmp
@@ -62,6 +62,11 @@ If 'unable to open database file' permission problems do this inside app folder
 Blanket fix for app permission problems
     
     $ sudo chmod -R 777 myapp
+
+Edit the Gemfile and add
+
+    # set ruby version
+    ruby '2.4.0'
 
 
 #### Add github's .gitignore 
@@ -159,6 +164,6 @@ Then edit `/app/views/films/index.html.erb` and paste in
 
     <h1>Hello World</h1>
 
-
+If you commit the change and push it back up to Heroku, don't forget to run `heroku run rake db:migrate` again.
 
 
