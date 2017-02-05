@@ -25,15 +25,21 @@ note: if u ever need rbenv to recalc what available versions are there type `rbe
 
     $ ruby -v                 # to get version. most likely its currently 2.0.0
     $ rbenv install -l        # to get a list of available versions
-    $ rbenv install 2.2.3     # download latest version of ruby
-    $ rbenv global 2.2.3      # set it so we use the new ver
+    $ rbenv install 2.4.0     # download latest version of ruby
+    $ rbenv global 2.4.0      # set it so we use the new ver
                               # quit terminal and start it again
-    $ ruby -v                 # => ruby 2.2.3p173
+    $ ruby -v                 # => ruby 2.4.0p0
 
 #### Install Rails
 
-    $ sudo gem install rails  # will install rails
-    $ rails -v                # print the version installed
+Install rails with the next command. Dont use sudo here as we dont want rails installed in root
+
+    $ gem install rails -v 5.0.1
+    $ rbenv rehash
+    
+Check the version of rails installed
+    
+    $ rails -v
 
 #### Create a rails app 
 
